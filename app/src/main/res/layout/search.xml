@@ -10,23 +10,27 @@
         app:cardCornerRadius="4dp"
 
         >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="5dp"
             >
             <ImageView
                 android:layout_width="90dp"
                 android:layout_height="90dp"
                 android:id="@+id/category_image"
-                android:src="@drawable/business"
+                android:gravity="center"
                 />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_below="@+id/category_image"
                 android:layout_marginTop="5dp"
-                android:textColor="#000"
+                android:textColor="#A9A9A9"
+                android:textStyle="bold"
                 android:id="@+id/category_text"
+                android:paddingLeft="15dp"
                 />
 
         </RelativeLayout>

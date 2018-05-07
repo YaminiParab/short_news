@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.practice.shortnews.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by yamini on 4/5/18.
@@ -18,31 +19,34 @@ import java.util.ArrayList;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
-    private ArrayList<String> name = new ArrayList<>();
-    private ArrayList<String> image_urls = new ArrayList<>();
     private Context context;
+    private List<Category> categoryList;
 
-    public RecyclerViewAdapter(ArrayList<String> name, ArrayList<String> image_urls, Context context) {
-        this.name = name;
-        this.image_urls = image_urls;
+
+    public RecyclerViewAdapter(Context context, List<Category> categoryList) {
         this.context = context;
+        this.categoryList = categoryList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.search, parent, false);
+        View view= LayoutInflater.from(context).inflate(R.layout.search, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Category category = categoryList.get(position);
+//        holder.images.setImageDrawable(context.getResources().getDrawable(category.getImage()));
+        holder.images.setImageResource(category.getImage());
+        holder.name.setText(category.getTitle());
 
     }
 
     @Override
     public int getItemCount() {
-        return name.size();
+        return categoryList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
