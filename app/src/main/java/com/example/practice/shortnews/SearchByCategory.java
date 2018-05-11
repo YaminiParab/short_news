@@ -7,6 +7,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +22,8 @@ public class SearchByCategory  extends AppCompatActivity {
 
     RecyclerView recyclerView;
     List<Category> categoryList;
+    List<Topic> topicList;
+    GridView topics;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +33,8 @@ public class SearchByCategory  extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
+
+        topics = (GridView) findViewById(R.id.topics);
         categoryList = new ArrayList<>();
 
         categoryList.add(new Category("MY FEED",R.drawable.business));
@@ -40,7 +47,15 @@ public class SearchByCategory  extends AppCompatActivity {
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this,categoryList);
         recyclerView.setAdapter(adapter);
 
+        topicList = new ArrayList<>();
+        topicList.add(new Topic(R.drawable.business, "IPL 2018"));
+
+//        TopicAdapter topic = new TopicAdapter(this,topicList);
+
+
+
 
 
     }
 }
+
