@@ -1,16 +1,10 @@
 package com.example.practice.shortnews;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +42,18 @@ public class SearchByCategory  extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         topicList = new ArrayList<>();
-        topicList.add(new Topic(R.drawable.business, "IPL 2018"));
+        topicList.add(new Topic(R.drawable.ipl, "IPL 2018"));
+        topicList.add(new Topic(R.drawable.karnataka_polls, "Karnataka Polls"));
+        topicList.add(new Topic(R.drawable.india, "India"));
+        topicList.add(new Topic(R.drawable.business, "Business"));
+        topicList.add(new Topic(R.drawable.politics, "Politics"));
+        topicList.add(new Topic(R.drawable.sports, "Sports"));
+        topicList.add(new Topic(R.drawable.technology, "Technology"));
+        topicList.add(new Topic(R.drawable.startup, "Startups"));
+        topicList.add(new Topic(R.drawable.entertainment, "Entertainment"));
 
-//        TopicAdapter topic = new TopicAdapter(this,topicList);
+        TopicAdapter topic = new TopicAdapter(this, topicList);
+        topics.setAdapter(topic);
 
 
 
