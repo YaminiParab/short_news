@@ -27,7 +27,7 @@
                 android:layout_height="20dp"
                 android:layout_below="@+id/category_image"
                 android:layout_marginTop="5dp"
-                android:textColor="#A9A9A9"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="bold"
                 android:id="@+id/category_text"
                 android:paddingLeft="15dp"

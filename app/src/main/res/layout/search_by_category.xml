@@ -6,45 +6,81 @@
     android:layout_margin="1dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_search"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorWhite"
+        android:elevation="4dp"
+        >
+        <TextView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search"
+            android:drawableLeft="@drawable/search"
+            android:clickable="true"
+            android:onClick="onClick"
+            android:textColor="@color/colorPrimaryDark"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/category_heading"
-        android:layout_margin="5dp">
+        android:layout_margin="5dp"
+        >
+
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CATEGORIES"/>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cat">
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/recyclerview"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="30dip"
+            >
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/recyclerview"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="30dip"
-        >
+        </android.support.v7.widget.RecyclerView>
 
-    </android.support.v7.widget.RecyclerView>
+    </RelativeLayout>
+
+
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="150dip">
 
-        <GridView
+        <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/topics"
-            android:numColumns="3"
-            android:columnWidth="120dp"
-            android:verticalSpacing="15dp"
-            android:horizontalSpacing="15dp"
-            android:gravity="center"
-            android:stretchMode="spacingWidthUniform">
-        </GridView>
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="30dip"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+
 
     </RelativeLayout>
 

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.practice.shortnews.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +40,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         Category category = categoryList.get(position);
 //        holder.images.setImageDrawable(context.getResources().getDrawable(category.getImage()));
-        holder.images.setImageResource(category.getImage());
+        Picasso.with(context).load(category.getImage()).error(R.drawable.sample_7).placeholder(R.drawable.sample_0).into(holder.images);
+//        holder.images.setImageResource(category.getImage());
         holder.name.setText(category.getTitle());
 
     }
