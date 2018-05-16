@@ -7,8 +7,13 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.GridView;
+
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +28,11 @@ public class SearchByCategory  extends AppCompatActivity {
     List<Topic> topicList;
     RecyclerView topics;
     GridLayoutManager topiclayoutManager;
-     CardView topic_card;
+    CardView topic_card;
+    MaterialSearchView materialSearchView;
+    String[] list;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +43,9 @@ public class SearchByCategory  extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.main_search);
+        setSupportActionBar(toolbar);
 
 
         topics = (RecyclerView) findViewById(R.id.topics);
@@ -74,8 +86,23 @@ public class SearchByCategory  extends AppCompatActivity {
         topiclayoutManager = new GridLayoutManager(this, 3);
         topics.setLayoutManager(topiclayoutManager);
         topics.setAdapter(topic);
+        list = new String[]{"android","kotlin","python","django","reactjs"};
+        materialSearchView = (MaterialSearchView) findViewById(R.id.mysearch);
+        materialSearchView.closeSearch();
+        materialSearchView.setSuggestions(list);
+        materialSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-        topic_card = (CardView) findViewById(R.id.topicCardView);
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+//        topic_card = (CardView) findViewById(R.id.topicCardView);
 //        topic_card.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -90,6 +117,13 @@ public class SearchByCategory  extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menus, menu);
+        MenuItem item = menu.findItem(R.id.search);
+        materialSearchView.setMenuItem(item);
+        return true;
     }
 }
 

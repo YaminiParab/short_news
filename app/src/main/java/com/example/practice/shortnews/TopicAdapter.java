@@ -1,6 +1,7 @@
 package com.example.practice.shortnews;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -110,13 +111,21 @@ public class TopicAdapter  extends RecyclerView.Adapter<TopicAdapter.ViewHolder>
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView topics_images;
         TextView topic_name;
         public ViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
             topics_images = itemView.findViewById(R.id.imageview);
             topic_name = itemView.findViewById(R.id.image_name);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(context,NewsActivity.class);
+            context.startActivity(intent);
+
         }
     }
 }
