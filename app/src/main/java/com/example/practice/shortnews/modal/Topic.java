@@ -1,4 +1,4 @@
-package com.example.practice.shortnews;
+package com.example.practice.shortnews.modal;
 
 /**
  * Created by yamini on 11/5/18.

@@ -1,4 +1,4 @@
-package com.example.practice.shortnews;
+package com.example.practice.shortnews.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.practice.shortnews.modal.Category;
 import com.example.practice.shortnews.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -1,22 +1,29 @@
-package com.example.practice.shortnews;
+package com.example.practice.shortnews.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
+//import android.support.v7.widget.SearchView;
+import android.widget.ArrayAdapter;
+import android.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.GridView;
+import android.widget.Toast;
 
+import com.example.practice.shortnews.modal.Category;
+import com.example.practice.shortnews.R;
+import com.example.practice.shortnews.modal.Topic;
+import com.example.practice.shortnews.adapter.RecyclerViewAdapter;
+import com.example.practice.shortnews.adapter.TopicAdapter;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
 
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  * Created by yamini on 3/5/18.
  */
@@ -30,6 +37,7 @@ public class SearchByCategory  extends AppCompatActivity {
     GridLayoutManager topiclayoutManager;
     CardView topic_card;
     MaterialSearchView materialSearchView;
+    SearchView searchview;
     String[] list;
 
 
@@ -44,8 +52,8 @@ public class SearchByCategory  extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.main_search);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.main_search);
+//        setSupportActionBar(toolbar);
 
 
         topics = (RecyclerView) findViewById(R.id.topics);
@@ -87,17 +95,23 @@ public class SearchByCategory  extends AppCompatActivity {
         topics.setLayoutManager(topiclayoutManager);
         topics.setAdapter(topic);
         list = new String[]{"android","kotlin","python","django","reactjs"};
-        materialSearchView = (MaterialSearchView) findViewById(R.id.mysearch);
-        materialSearchView.closeSearch();
-        materialSearchView.setSuggestions(list);
-        materialSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+        ArrayAdapter<String> newsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, list);
+
+        searchview = (SearchView) findViewById(R.id.searchView);
+        searchview.setQueryHint("Search View");
+//        materialSearchView = (MaterialSearchView) findViewById(R.id.mysearch);
+//        materialSearchView.closeSearch();
+//        searchView.setSuggestionsAdapter(list);
+        searchview.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
             public boolean onQueryTextSubmit(String query) {
+                Toast.makeText(getBaseContext(), query, Toast.LENGTH_LONG).show();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                Toast.makeText(getBaseContext(), newText, Toast.LENGTH_LONG).show();
                 return false;
             }
         });
@@ -122,7 +136,7 @@ public class SearchByCategory  extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menus, menu);
         MenuItem item = menu.findItem(R.id.search);
-        materialSearchView.setMenuItem(item);
+//        materialSearchView.setMenuItem(item);
         return true;
     }
 }
